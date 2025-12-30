@@ -14,10 +14,7 @@
       },
       "type": "n8n-nodes-base.gmailTrigger",
       "typeVersion": 1.3,
-      "position": [
-        0,
-        0
-      ],
+      "position": [0, 0],
       "id": "93c3e7ac-12d4-4145-97a2-8e12c587983c",
       "name": "Gmail Trigger",
       "alwaysOutputData": true,
@@ -37,10 +34,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [
-        208,
-        0
-      ],
+      "position": [208, 0],
       "id": "6d410175-e8ce-4a9d-8bce-5d04a6e24197",
       "name": "AI Agent"
     },
@@ -50,10 +44,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        80,
-        208
-      ],
+      "position": [80, 208],
       "id": "84b1dae3-322a-4c24-a051-1a79152af20d",
       "name": "Google Gemini Chat Model",
       "credentials": {
@@ -89,10 +80,7 @@
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        560,
-        0
-      ],
+      "position": [560, 0],
       "id": "c95064c3-d314-4635-823a-9af3c825fcbb",
       "name": "If"
     },
@@ -102,10 +90,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        384,
-        208
-      ],
+      "position": [384, 208],
       "id": "58f68039-7008-4e11-83a8-56ec1ec110af",
       "name": "Structured Output Parser"
     },
@@ -116,10 +101,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
-      "position": [
-        224,
-        224
-      ],
+      "position": [224, 224],
       "id": "04cf20b4-e58e-47f7-8415-be7ef83c7aa6",
       "name": "Simple Memory"
     },
@@ -132,10 +114,7 @@
       },
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
-      "position": [
-        768,
-        -96
-      ],
+      "position": [768, -96],
       "id": "d2e550b3-559b-4dca-ae0a-ee109d64cb5a",
       "name": "Reply to a message",
       "webhookId": "56f49c25-7ddc-45d7-b8b3-9fc32ecbe915",
@@ -157,19 +136,14 @@
         "start": "={{ $json.output[0].meetingTimeStart }}",
         "end": "={{ $json.output[0].meetingTimeEnd }}",
         "additionalFields": {
-          "attendees": [
-            "muditnag13@gmail.com"
-          ],
+          "attendees": ["muditnag13@gmail.com"],
           "description": "",
           "sendUpdates": "all"
         }
       },
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
-      "position": [
-        768,
-        96
-      ],
+      "position": [768, 96],
       "id": "4736a457-6995-4c55-98b7-4fad91ce8cf9",
       "name": "Create an event",
       "credentials": {
