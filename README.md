@@ -1,36 +1,32 @@
 
 # n8n Agents Collection
 
-This repository is a collection of n8n workflow agents and example automations designed to be imported into an n8n instance. Each file in the root and subfolders is an exported n8n workflow (JSON) that implements an automation or "agent" for common tasks such as customer support, voice agents, email automation, content creation, and lead generation.
+A curated collection of ready-to-import n8n workflows (JSON exports) implementing agents and automations you can adapt for your own n8n instance. Workflows cover common automation patterns like email/calendar agents, content generation, voice/TTS pipelines, RAG/embeddings, lead capture, and human-in-the-loop flows.
 
-Key features
-- A variety of ready-to-import n8n workflows (.json) covering: customer support voice agents, ElevenLabs voice integrations, Gmail autoreply and scheduling automations, LinkedIn automation, lead generation, and script/video generation.
-- A `JARVIS/` subfolder containing specialized agent workflows and supporting examples.
-- Small, focused workflows intended to be adapted and extended for your own n8n instance.
+Why this repo
+- Save time: reuse tested workflow patterns rather than building from scratch.
+- Learn: see example prompts, output parsers, and tool integrations used in production-like workflows.
+- Customize: each JSON is intended as a starting point — edit nodes, prompts, and credentials to match your environment.
 
-Repository layout (high-level)
-- Root: many standalone exported workflows (JSON files) — import any into n8n using the import workflow feature.
-- JARVIS/: a collection of related agents and a README with more context.
-- "Script and Video Generation/": additional workflows and notes for media generation tasks.
-
-How to use
+Quick start
 1. Install n8n (self-hosted or cloud): https://n8n.io/
-2. In n8n editor, choose "Import" and select one of the JSON files from this repo.
-3. Inspect credentials and node configuration — replace any placeholder API keys or webhook URLs with your own.
-4. Activate or test the workflow in n8n.
+2. In the n8n editor choose **Import** and select a workflow JSON from this repo.
+3. Configure credentials referenced by nodes (OpenAI/Anthropic/Google/Gmail/Drive/ElevenLabs/Pinecone/etc.).
+4. Test the workflow using the editor's Execute/Trigger tools before activating.
 
-Tips
-- Review each workflow's credential nodes (e.g., ElevenLabs, Gmail, OpenAI) and configure them in your n8n instance before activating.
-- Use the workflow versions in this repo as starting points — adapt node logic, filters, and triggers to match your environment.
+Best practices
+- Replace placeholder API keys and temporary upload services with production-ready secrets and storage (e.g., S3/R2).
+- Keep credentials in n8n's credential store — never commit secrets to the repo.
+- Add human-approval steps for high-impact actions (sending emails, modifying calendars, publishing content).
 
 Contributing
-- Add new exported n8n workflows or improvements to existing ones as separate JSON files.
-- Name conventions: use descriptive file names (e.g., `Customer_Support_Voice_Agent.json`).
-- Open an issue to discuss larger changes or share usage notes.
+- Add new exported workflow JSON files or improved READMEs per folder.
+- Use clear file names and include a short README for non-trivial workflows.
+- Open issues for bugs, suggestions, or requests.
 
 License & contact
-- This repository does not include a license file. If you plan to reuse or share these workflows, consider adding a `LICENSE` file to clarify terms.
-- For questions or help adapting workflows, open an issue in this repo or add a README note in the relevant folder.
+- No license included. Add a `LICENSE` file if you plan to publish or share these workflows publicly.
+- For help adapting any workflow, open an issue or add a README note in the relevant folder.
 
-Enjoy building with n8n — import the workflows and customize them to automate tasks quickly.
+Enjoy building with n8n — import workflows, adapt prompts, and iterate quickly.
 
