@@ -3,17 +3,12 @@
   "nodes": [
     {
       "parameters": {
-        "updates": [
-          "message"
-        ],
+        "updates": ["message"],
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
-      "position": [
-        224,
-        80
-      ],
+      "position": [224, 80],
       "id": "cc4bd556-03e7-4dfe-8835-19ced46bf948",
       "name": "Telegram Trigger",
       "webhookId": "c8a34e4f-7d3d-4bcf-997b-363f5e0846cf",
@@ -31,10 +26,7 @@
       },
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
-      "position": [
-        432,
-        80
-      ],
+      "position": [432, 80],
       "id": "a2bda04f-3b19-4044-9e29-1c914410a753",
       "name": "Send a chat action",
       "webhookId": "5bb0fbe9-1362-4d80-8d7a-bd90aaab2a26",
@@ -54,10 +46,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [
-        640,
-        80
-      ],
+      "position": [640, 80],
       "id": "f5cb9ea7-9dae-4646-8fd8-48d424d02743",
       "name": "AI Agent"
     },
@@ -67,10 +56,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        448,
-        304
-      ],
+      "position": [448, 304],
       "id": "7448016d-ebe8-4c0f-a288-66e1a7e298b6",
       "name": "Google Gemini Chat Model",
       "credentials": {
@@ -100,10 +86,7 @@
       },
       "type": "n8n-nodes-base.googleSheetsTool",
       "typeVersion": 4.7,
-      "position": [
-        816,
-        320
-      ],
+      "position": [816, 320],
       "id": "a71fa628-fbf7-49fe-85c1-48b31d588aad",
       "name": "Get row(s) in sheet in Google Sheets",
       "credentials": {
@@ -120,10 +103,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
-      "position": [
-        608,
-        336
-      ],
+      "position": [608, 336],
       "id": "4d64b4ff-2257-497e-9b3d-62391b888d54",
       "name": "Simple Memory"
     },
@@ -133,10 +113,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        1024,
-        304
-      ],
+      "position": [1024, 304],
       "id": "ab133d84-83f0-4a15-b6db-d16262be3fbc",
       "name": "Structured Output Parser"
     },
@@ -148,10 +125,7 @@
       },
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
-      "position": [
-        992,
-        80
-      ],
+      "position": [992, 80],
       "id": "cb7e7179-a1c7-4e97-827f-f6bf500b092b",
       "name": "Send a text message",
       "webhookId": "76fc112f-9e1d-459d-93fd-05ac75c43db7",
