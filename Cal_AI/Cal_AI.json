@@ -10,10 +10,7 @@
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
-      "position": [
-        0,
-        0
-      ],
+      "position": [0, 0],
       "id": "a2c224b7-1203-4bbb-8053-eb11d95c9022",
       "name": "Webhook",
       "webhookId": "f22ecd48-d6f9-48bf-9c7a-8bfbf071cf59"
@@ -29,10 +26,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [
-        208,
-        0
-      ],
+      "position": [208, 0],
       "id": "2fb5c769-efe0-4b3d-9ab8-d7e5de2c213b",
       "name": "AI Agent"
     },
@@ -42,10 +36,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        80,
-        208
-      ],
+      "position": [80, 208],
       "id": "ff04352f-c9d0-45ee-8e96-fe4abdabb657",
       "name": "Google Gemini Chat Model",
       "credentials": {
@@ -61,10 +52,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        384,
-        208
-      ],
+      "position": [384, 208],
       "id": "83eea64f-8917-4859-adba-8d9729bcaf12",
       "name": "Structured Output Parser"
     },
@@ -77,10 +65,7 @@
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
-      "position": [
-        208,
-        560
-      ],
+      "position": [208, 560],
       "id": "5cd13301-e068-4333-9fc5-8a2183b3d820",
       "name": "Webhook1",
       "webhookId": "3477492c-c3a1-4333-9a04-b3abfed82566"
@@ -94,10 +79,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [
-        416,
-        560
-      ],
+      "position": [416, 560],
       "id": "4544adf9-67e7-4e7c-b6f2-95d5ef9c5cea",
       "name": "AI Agent1"
     },
@@ -107,10 +89,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        288,
-        768
-      ],
+      "position": [288, 768],
       "id": "8b38f38d-0987-41e2-9343-a0db5ee046e7",
       "name": "Google Gemini Chat Model1",
       "credentials": {
@@ -126,10 +105,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        624,
-        752
-      ],
+      "position": [624, 752],
       "id": "0220cd2c-8d60-40ab-a44f-28cd27d07cec",
       "name": "Structured Output Parser1"
     }
