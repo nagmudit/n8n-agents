@@ -4,17 +4,12 @@
     {
       "parameters": {
         "rule": {
-          "interval": [
-            {}
-          ]
+          "interval": [{}]
         }
       },
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [
-        0,
-        0
-      ],
+      "position": [0, 0],
       "id": "73799980-c9e0-460f-9116-9711cb25cb2f",
       "name": "Schedule Trigger"
     },
@@ -38,10 +33,7 @@
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
-      "position": [
-        208,
-        0
-      ],
+      "position": [208, 0],
       "id": "83cc6dfa-ef45-4b11-8fe9-464ee0f157ed",
       "name": "Get row(s) in sheet",
       "credentials": {
@@ -78,10 +70,7 @@
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [
-        416,
-        0
-      ],
+      "position": [416, 0],
       "id": "5910522e-955b-4874-90bd-62678a860d3f",
       "name": "If"
     },
@@ -89,10 +78,7 @@
       "parameters": {},
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
-      "position": [
-        624,
-        -96
-      ],
+      "position": [624, -96],
       "id": "796e6441-6b9e-44cf-86f9-04c66f3eb1c1",
       "name": "Limit"
     },
@@ -105,10 +91,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [
-        832,
-        -96
-      ],
+      "position": [832, -96],
       "id": "af98de2d-7534-40d2-a388-2c166da07d4a",
       "name": "AI Agent"
     },
@@ -118,10 +101,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        688,
-        112
-      ],
+      "position": [688, 112],
       "id": "1eca6e80-0f5b-496c-a61b-518fd8ff9a4c",
       "name": "Google Gemini Chat Model",
       "credentials": {
@@ -137,10 +117,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        1008,
-        112
-      ],
+      "position": [1008, 112],
       "id": "0a004283-41c8-4f53-8d91-c138b659a512",
       "name": "Structured Output Parser"
     },
@@ -169,9 +146,7 @@
             "Status": "Pending",
             "Image Prompt": "={{ $json.output.image_prompt }}"
           },
-          "matchingColumns": [
-            "LinkedIn Post Title"
-          ],
+          "matchingColumns": ["LinkedIn Post Title"],
           "schema": [
             {
               "id": "ID",
@@ -239,10 +214,7 @@
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
-      "position": [
-        1184,
-        -96
-      ],
+      "position": [1184, -96],
       "id": "ec5f8d29-bd8a-4157-a1b4-8b56598e5eec",
       "name": "Append or update row in sheet",
       "credentials": {
@@ -269,10 +241,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
-      "position": [
-        1392,
-        -96
-      ],
+      "position": [1392, -96],
       "id": "ff5d7570-c834-4f00-ae9b-9d3e7c1453aa",
       "name": "HTTP Request"
     },
@@ -286,10 +255,7 @@
       },
       "type": "n8n-nodes-base.linkedIn",
       "typeVersion": 1,
-      "position": [
-        1600,
-        -96
-      ],
+      "position": [1600, -96],
       "id": "490956ea-e661-4420-920d-b293be90e05f",
       "name": "Create a post",
       "credentials": {
@@ -322,9 +288,7 @@
             "LinkedIn Post Title": "={{ $('Append or update row in sheet').item.json['LinkedIn Post Title'] }}",
             "Status": "Posted"
           },
-          "matchingColumns": [
-            "LinkedIn Post Title"
-          ],
+          "matchingColumns": ["LinkedIn Post Title"],
           "schema": [
             {
               "id": "ID",
@@ -383,10 +347,7 @@
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
-      "position": [
-        1808,
-        -96
-      ],
+      "position": [1808, -96],
       "id": "8a009f03-f3ad-4821-8136-826de98fbc2e",
       "name": "Append or update row in sheet1",
       "credentials": {
