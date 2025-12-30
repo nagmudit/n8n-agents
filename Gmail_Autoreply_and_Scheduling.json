@@ -1,0 +1,267 @@
+{
+  "name": "Gmail Autoreply and Scheduling",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "93c3e7ac-12d4-4145-97a2-8e12c587983c",
+      "name": "Gmail Trigger",
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VRkSns3ZukgyPqsW",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are my personal AI email assistant.\nYour role is to respond to incoming emails as follows:\n\nPersonal context:\n- I am a law student based in Mumbai, specializing in human rights law, criminal law, and cyber law.\n- I am actively seeking internships, including at Consortia Legal Mumbai, and regularly work on legal research papers and backend development projects.\n- My technical expertise is in backend development (NestJS, JavaScript/TypeScript), API design, database management, and cloud infrastructure.\n- I prefer concise, polite, and professional communication in all emails.\n\nYour tasks:\n1. Read the user's email.\n2. Determine whether the sender is requesting to schedule a meeting or simply needs a reply.\n      - If the sender wants to schedule a meeting, ask for their available times or suggest 2-3 possible slots in the reply.\n      - If the sender simply needs a reply, respond to their query in detail, referencing my relevant legal or technical experience when appropriate.\n3. Always structure your response as a JSON object with these fields:\n    {\n      \"action\": \"reply\" OR \"schedule_meeting\",\n      \"replyText\": \"[The full reply you will send]\",\n      \"meetingTimeStart\": \"[if action is schedule_meeting, enter the start date and time by capturing sender's input; else leave blank]\",\n      \"meetingTimeEnd\": \"[if action is schedule_meeting, enter the end date and time by capturing sender's input; else leave blank]\",\n      \"messageId\": \"[if action is reply, then send the messageId in this json for further use, which is added below.]\"\n    }\n\nIncoming Email:\nSubject:{{ $json.Subject }}\nFrom:{{ $json.From }}\nBody:{{ $json.snippet }}\nmessageId: {{ $json.id }}\n\nInstructions:\n- Use the provided personal context when writing replies. Address questions about my law studies or backend developer skills with accurate details.\n- Never invent facts. If you are unsure, suggest a follow-up.\n- Keep emails professional and warm, suitable for academic or internship communication.\n- Reply only once per email. If the conversation appears to be a meeting follow-up, reference previous correspondence.\n ",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "6d410175-e8ce-4a9d-8bce-5d04a6e24197",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "84b1dae3-322a-4c24-a051-1a79152af20d",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "HzJnrNQebZhL89av",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "74f18f4f-e872-4416-8af7-d695f2bee92b",
+              "leftValue": "={{ $json.output[0].action }}",
+              "rightValue": "=reply",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        560,
+        0
+      ],
+      "id": "c95064c3-d314-4635-823a-9af3c825fcbb",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "[\n  {\n    \"action\": \"\",\n    \"replyText\": \"\",\n    \"meetingTimeStart\": \"\",\n    \"meetingTimeEnd\": \"\",\n    \"messageId\": \"\"\n  }\n]\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        384,
+        208
+      ],
+      "id": "58f68039-7008-4e11-83a8-56ec1ec110af",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Gmail Trigger').item.json.threadId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        224
+      ],
+      "id": "04cf20b4-e58e-47f7-8415-be7ef83c7aa6",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ $json.output[0].messageId }}",
+        "message": "={{ $json.output[0].replyText }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        768,
+        -96
+      ],
+      "id": "d2e550b3-559b-4dca-ae0a-ee109d64cb5a",
+      "name": "Reply to a message",
+      "webhookId": "56f49c25-7ddc-45d7-b8b3-9fc32ecbe915",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VRkSns3ZukgyPqsW",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "muditnag13@gmail.com",
+          "mode": "list",
+          "cachedResultName": "muditnag13@gmail.com"
+        },
+        "start": "={{ $json.output[0].meetingTimeStart }}",
+        "end": "={{ $json.output[0].meetingTimeEnd }}",
+        "additionalFields": {
+          "attendees": [
+            "muditnag13@gmail.com"
+          ],
+          "description": "",
+          "sendUpdates": "all"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        768,
+        96
+      ],
+      "id": "4736a457-6995-4c55-98b7-4fad91ce8cf9",
+      "name": "Create an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "5VeH5YzkI7Ai4wUN",
+          "name": "Google Calendar account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Reply to a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 0,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

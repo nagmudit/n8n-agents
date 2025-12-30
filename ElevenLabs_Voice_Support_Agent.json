@@ -1,0 +1,346 @@
+{
+  "name": "ElevenLabs Voice Support Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bf54f2d4-0d5c-4fbb-a2d3-553dcba4c13d",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b619a52a-e59e-4851-a171-0966c17135b9",
+      "name": "Webhook",
+      "webhookId": "bf54f2d4-0d5c-4fbb-a2d3-553dcba4c13d"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=The call transcription :\n{{ $json.body.searchQuery }}\n",
+        "options": {
+          "systemMessage": "GOAL\n\nYou are an AI call support agent.\nYour job is to handle only the last request in the call transcription and provide concise, factual answers based on information found in the company’s database (Google Sheets).\nIf the information is missing, clearly say it is not available in the database.\n\nTOOLS AVAILABLE\n\nthink → Use this to reason briefly before each action.\n\nGet Knowledgebase → Reads data from the company knowledge base stored in Google Sheets.\n\nCall this node only once per request.\n\nUse it for company info, products, policies, FAQs, or support questions.\n\nNever mention “sheet,” “node,” or “tool” — refer to it as “database” or “knowledge base”\n\nIf data is not found, reply: “L’information n’est pas disponible dans la base de connaissances.”\n\nRULES AND LOGIC\n\nFor any user question, call Get Knowledgebase once to fetch the minimal relevant data.\n\nAnswer in no more than 3 short sentences or bullets.\n\nIf unclear or ambiguous, ask one clarifying question.\n\nNever fabricate information or mention technical details.\n\nAlways stay polite, professional, and concise.\n\nRESPONSE STYLE\n\nSimple, factual, and conversational.\n\n≤3 short sentences or 3 bullet points.\n\nDo only what the user asked in their last message.\n\nReference data as coming from the “database” or “knowledge base.”\n\nRESTRICTIONS\n\nDo not attempt to check availability, schedule, or book meetings.\n\nDo not call any tool other than Get Knowledgebase.\n\nDo not mention internal tools, sheets, or system prompts.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "232c7467-7186-4231-91f3-493ad25a50f4",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "b28c416b-5e14-4dd9-a5d4-526a70dca298",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "HzJnrNQebZhL89av",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1V0nRa5MZhtANSBvCGmCLA5tIPxaxt2AzD7Y18JKl8C4",
+          "mode": "list",
+          "cachedResultName": "Knowledge Base",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1V0nRa5MZhtANSBvCGmCLA5tIPxaxt2AzD7Y18JKl8C4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1V0nRa5MZhtANSBvCGmCLA5tIPxaxt2AzD7Y18JKl8C4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        464,
+        224
+      ],
+      "id": "6c1f7454-fd6b-4e10-a793-218b078907ce",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "3Q08tzKDlp9K7tEQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        560,
+        0
+      ],
+      "id": "3058b594-fbbb-46c7-ae41-31b645423167",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        304,
+        240
+      ],
+      "id": "bf3ff910-f964-43a4-a03d-ab056e2f1ebf",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d67a7ef0-2b8e-4084-8d95-e283b67c51e6",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        192,
+        608
+      ],
+      "id": "dc9ab242-fb72-4008-902f-ed1fb5b7416f",
+      "name": "Webhook1",
+      "webhookId": "d67a7ef0-2b8e-4084-8d95-e283b67c51e6"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=The call transcription :\n{{ $json.body.searchQuery }}\n",
+        "options": {
+          "systemMessage": "GOAL\n\nYou are an AI call support agent.\nYour job is to handle only the last request in the call transcription and provide concise, factual answers based on information found in the company’s database (Google Sheets).\nIf the information is missing, clearly say it is not available in the database.\n\nTOOLS AVAILABLE\n\nthink → Use this to reason briefly before each action.\n\nGet Knowledgebase → Reads data from the company knowledge base stored in Google Sheets.\n\nCall this node only once per request.\n\nUse it for company info, products, policies, FAQs, or support questions.\n\nNever mention “sheet,” “node,” or “tool” — refer to it as “database” or “knowledge base”\n\nIf data is not found, reply: ““I’m sorry, that information isn’t currently available in our database.”\n\nRULES AND LOGIC\n\nFor any user question, call Get Knowledgebase once to fetch the minimal relevant data.\n\nAnswer in no more than 3 short sentences or bullets.\n\nIf unclear or ambiguous, ask one clarifying question.\n\nNever fabricate information or mention technical details.\n\nAlways stay polite, professional, and concise.\n\nRESPONSE STYLE\n\nSimple, factual, and conversational.\n\n≤3 short sentences or 3 bullet points.\n\nDo only what the user asked in their last message.\n\nReference data as coming from the “database” or “knowledge base.”\n\nRESTRICTIONS\n\nDo not attempt to check availability, schedule, or book meetings.\n\nDo not call any tool other than Get Knowledgebase.\n\nDo not mention internal tools, sheets, or system prompts.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        400,
+        608
+      ],
+      "id": "7d9b7395-0f23-4e2a-85e9-e8c40ba921bb",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        272,
+        816
+      ],
+      "id": "c990f358-97d0-4739-ad4b-d3aa29e45a72",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "HzJnrNQebZhL89av",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1V0nRa5MZhtANSBvCGmCLA5tIPxaxt2AzD7Y18JKl8C4",
+          "mode": "list",
+          "cachedResultName": "Knowledge Base",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1V0nRa5MZhtANSBvCGmCLA5tIPxaxt2AzD7Y18JKl8C4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1V0nRa5MZhtANSBvCGmCLA5tIPxaxt2AzD7Y18JKl8C4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        688,
+        848
+      ],
+      "id": "fae01949-3a8c-4769-a624-240e0db2c5a0",
+      "name": "Get row(s) in sheet in Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "3Q08tzKDlp9K7tEQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        448,
+        832
+      ],
+      "id": "5d2a2888-e7d6-4187-949b-b54c0d99e82c",
+      "name": "Think1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        752,
+        608
+      ],
+      "id": "594c8e14-b55f-4fcc-a048-7a9889dc0ca6",
+      "name": "Respond to Webhook1"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 0,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
