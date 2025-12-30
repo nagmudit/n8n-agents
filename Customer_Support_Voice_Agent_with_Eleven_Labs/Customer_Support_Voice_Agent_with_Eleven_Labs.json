@@ -10,10 +10,7 @@
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
-      "position": [
-        0,
-        0
-      ],
+      "position": [0, 0],
       "id": "44c5105d-4689-407c-9d51-15c997218c4a",
       "name": "Webhook",
       "webhookId": "763e88ba-1900-4050-bbf9-72c819b2e95e"
@@ -28,10 +25,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [
-        208,
-        0
-      ],
+      "position": [208, 0],
       "id": "a3e5e927-f47e-428f-99e2-1344a4b149e5",
       "name": "AI Agent"
     },
@@ -41,10 +35,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        80,
-        208
-      ],
+      "position": [80, 208],
       "id": "82b2e583-c62d-4482-9df7-1f277c854aeb",
       "name": "Google Gemini Chat Model",
       "credentials": {
@@ -74,10 +65,7 @@
       },
       "type": "n8n-nodes-base.googleSheetsTool",
       "typeVersion": 4.7,
-      "position": [
-        464,
-        208
-      ],
+      "position": [464, 208],
       "id": "8056d332-59ff-4947-9207-a20f670f45f5",
       "name": "Get row(s) in sheet in Google Sheets",
       "credentials": {
@@ -93,10 +81,7 @@
       },
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
-      "position": [
-        560,
-        0
-      ],
+      "position": [560, 0],
       "id": "300db592-6926-4edd-906f-17d588ec8a74",
       "name": "Respond to Webhook"
     },
@@ -104,10 +89,7 @@
       "parameters": {},
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
-      "position": [
-        288,
-        240
-      ],
+      "position": [288, 240],
       "id": "417a2431-3cfa-4fdf-8e0c-a49d792ecee9",
       "name": "Think"
     }
