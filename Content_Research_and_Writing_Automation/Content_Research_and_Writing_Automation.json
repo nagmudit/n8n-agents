@@ -4,17 +4,12 @@
     {
       "parameters": {
         "rule": {
-          "interval": [
-            {}
-          ]
+          "interval": [{}]
         }
       },
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [
-        -3008,
-        160
-      ],
+      "position": [-3008, 160],
       "id": "32ce608f-d489-45ad-87e5-d2eabffd4d0a",
       "name": "Schedule Trigger"
     },
@@ -34,10 +29,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [
-        -2720,
-        160
-      ],
+      "position": [-2720, 160],
       "id": "952c24ff-f0cd-4c3e-84f6-e5dd59186437",
       "name": "HTTP Request"
     },
@@ -47,10 +39,7 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        -2480,
-        160
-      ],
+      "position": [-2480, 160],
       "id": "8afc780e-c5dd-441e-b8ab-fed270c415c4",
       "name": "Code in JavaScript"
     },
@@ -63,10 +52,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
-      "position": [
-        -1424,
-        176
-      ],
+      "position": [-1424, 176],
       "id": "10f200f8-b597-48c6-831c-2e0d8670bf2b",
       "name": "AI Agent"
     },
@@ -77,10 +63,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        -1424,
-        384
-      ],
+      "position": [-1424, 384],
       "id": "e5fa2415-99a4-4720-aa6a-0512cfbb50f8",
       "name": "Google Gemini Chat Model",
       "credentials": {
@@ -96,10 +79,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        -1264,
-        384
-      ],
+      "position": [-1264, 384],
       "id": "519f988c-3c57-4a93-9bce-09ddfa016926",
       "name": "Structured Output Parser"
     },
@@ -112,10 +92,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
-      "position": [
-        -2256,
-        160
-      ],
+      "position": [-2256, 160],
       "id": "219b4ce3-9b04-4f27-8f65-997d389c7628",
       "name": "AI Agent1"
     },
@@ -125,10 +102,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        -2352,
-        384
-      ],
+      "position": [-2352, 384],
       "id": "372a8797-05a3-4260-ab85-8cc846f88213",
       "name": "Google Gemini Chat Model1",
       "credentials": {
@@ -144,10 +118,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        -2096,
-        384
-      ],
+      "position": [-2096, 384],
       "id": "f0ff5edd-a053-4a86-a123-51d0e556d33b",
       "name": "Structured Output Parser1"
     },
@@ -160,10 +131,7 @@
       },
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
-      "position": [
-        -1712,
-        160
-      ],
+      "position": [-1712, 160],
       "id": "fabbc2a5-2b41-4e46-b836-60fed0b15e89",
       "name": "Loop Over Items"
     },
@@ -173,10 +141,7 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        -1936,
-        160
-      ],
+      "position": [-1936, 160],
       "id": "99674c74-4bf3-40b8-a721-5321897e15fa",
       "name": "Code in JavaScript1"
     },
@@ -301,10 +266,7 @@
       },
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
-      "position": [
-        -1024,
-        176
-      ],
+      "position": [-1024, 176],
       "id": "441b9c1a-da5a-4bae-a2be-552aad608b5e",
       "name": "Append row in sheet",
       "credentials": {
@@ -317,17 +279,12 @@
     {
       "parameters": {
         "rule": {
-          "interval": [
-            {}
-          ]
+          "interval": [{}]
         }
       },
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [
-        -2128,
-        928
-      ],
+      "position": [-2128, 928],
       "id": "b833557f-b901-45f5-802d-52c044948205",
       "name": "Schedule Trigger1"
     },
@@ -347,10 +304,7 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
-      "position": [
-        -1920,
-        928
-      ],
+      "position": [-1920, 928],
       "id": "e646bff8-9cbd-4a2a-8278-bd66ce6e86a6",
       "name": "HTTP Request1"
     },
@@ -360,10 +314,7 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        -1712,
-        928
-      ],
+      "position": [-1712, 928],
       "id": "c1d47a68-9e5a-4c50-93f3-fd778bb5eb81",
       "name": "Code in JavaScript2"
     },
@@ -376,10 +327,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [
-        -1504,
-        928
-      ],
+      "position": [-1504, 928],
       "id": "3ff68e00-845e-425f-a88b-b9ac7f957381",
       "name": "AI Agent2"
     },
@@ -389,10 +337,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        -1648,
-        1136
-      ],
+      "position": [-1648, 1136],
       "id": "dc82cb11-af86-4801-b062-40edcfbe25c7",
       "name": "Google Gemini Chat Model2",
       "credentials": {
@@ -408,10 +353,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        -1344,
-        1136
-      ],
+      "position": [-1344, 1136],
       "id": "ffa04198-6de9-4397-8151-a66847ae66a4",
       "name": "Structured Output Parser2"
     },
@@ -421,10 +363,7 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        -1152,
-        928
-      ],
+      "position": [-1152, 928],
       "id": "3ccdbf24-4add-4d30-92c7-2415640066f3",
       "name": "Code in JavaScript3"
     },
@@ -435,10 +374,7 @@
       },
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
-      "position": [
-        -944,
-        928
-      ],
+      "position": [-944, 928],
       "id": "fae8a625-d1c1-4f9a-9606-e989b88f0950",
       "name": "Loop Over Items1"
     },
@@ -451,10 +387,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [
-        -640,
-        944
-      ],
+      "position": [-640, 944],
       "id": "c76b298a-792b-49d7-8d8e-e81659c7f169",
       "name": "AI Agent3"
     },
@@ -464,10 +397,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
-      "position": [
-        -720,
-        1136
-      ],
+      "position": [-720, 1136],
       "id": "813ffb62-a656-4439-95a6-af814782353f",
       "name": "Google Gemini Chat Model3",
       "credentials": {
@@ -483,10 +413,7 @@
       },
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
-      "position": [
-        -432,
-        1136
-      ],
+      "position": [-432, 1136],
       "id": "644c1ba5-364d-450f-995c-79d5ece2fdde",
       "name": "Structured Output Parser3"
     }
